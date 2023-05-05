@@ -1,0 +1,33 @@
+name: Generate terraform docs
+on:
+  push:
+    branches:    
+      - "master" # will run only on master to have the latest documentation on master
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # - name: emr docs
+    #   uses: terraform-docs/gh-actions@v1.0.0
+    #   with:
+    #     working-dir: ./emr
+    #     output-file: README.md
+    #     output-method: replace
+    #     git-push: "true"
+    #     config-file: "tfdocs-config.yml"
+    #     git-commit-message: "terraform-docs: automated action for emr docs"
+
+    - name: Generate TF docs for modules
+      uses: terraform-docs/gh-actions@v1.0.0
+      with:
+        #working-dir: "."
+        config-file: "tfdocs-config.yml"
+        recursive: true
+        recursive-path: "."
+        output-file: README.md
+        output-method: replace
+        git-push: "true"
+        git-commit-message: "terraform-docs: automated action for modules docs"
