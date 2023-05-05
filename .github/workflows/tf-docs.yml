@@ -10,20 +10,33 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # - name: emr docs
-    #   uses: terraform-docs/gh-actions@v1.0.0
-    #   with:
-    #     working-dir: ./emr
-    #     output-file: README.md
-    #     output-method: replace
-    #     git-push: "true"
-    #     config-file: "tfdocs-config.yml"
-    #     git-commit-message: "terraform-docs: automated action for emr docs"
+    - name: Generate TF docs for main folder
+      uses: terraform-docs/gh-actions@v1.0.0
+      with:
+        config-file: "tfdocs-config.yml"
+        recursive: true
+        recursive-path: "."
+        output-file: README.md
+        output-method: replace
+        git-push: "true"
+        git-commit-message: "terraform-docs: automated action for modules docs"
 
-    - name: Generate TF docs for modules
+    - name: Generate TF docs for root module folder
       uses: terraform-docs/gh-actions@v1.0.0
       with:
         working-dir: "./documentDB"
+        config-file: "tfdocs-config.yml"
+        recursive: true
+        recursive-path: "."
+        output-file: README.md
+        output-method: replace
+        git-push: "true"
+        git-commit-message: "terraform-docs: automated action for modules docs"
+
+    - name: Generate TF docs for module folder
+      uses: terraform-docs/gh-actions@v1.0.0
+      with:
+        working-dir: "./documentDB/module"
         config-file: "tfdocs-config.yml"
         recursive: true
         recursive-path: "."
