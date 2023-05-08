@@ -22,17 +22,17 @@ variable "vpc_name" {
   type        = string
 }
 
-variable "documentdb_cluster" {
+variable "rds_cluster" {
   description = "List of documentDB clusters that needs to be created"
   type = list(object({
     name                = string
     engine_version      = optional(string)
-    port                = optional(number)
-    master_password     = optional(string)
-    master_username     = optional(string)
+    port                = optional(string)
+    password            = optional(string)
+    username            = optional(string)
+    instance_type       = optional(string)
+    replica_count       = optional(number)
+    cidr_block_ingress  = optional(list(string))
     snapshot_identifier = optional(string)
-    instances_config = list(object({
-      instance_class = string
-    }))
   }))
 }

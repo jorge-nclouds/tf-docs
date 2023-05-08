@@ -3,7 +3,7 @@ terraform {
   backend "s3" {
     bucket         = "getrev-prod-terraform-backend"
     region         = "us-east-1"
-    key            = "prod/storageInfra/documentDB/terraform.state"
+    key            = "storageInfra/rdsAurora/terraform.state"
     dynamodb_table = "getrev-prod-terraform-backend"
   }
 }
