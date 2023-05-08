@@ -13,3 +13,5 @@ data "aws_subnets" "data_subnets" {
     Tier = "Data"
   }
 }
+
+data "aws_caller_identity" "current" {}

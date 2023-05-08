@@ -24,7 +24,7 @@ jobs:
     - name: Generate TF docs for root module folder
       uses: terraform-docs/gh-actions@v1.0.0
       with:
-        working-dir: "./rdsAurora"
+        working-dir: "./elastiCache"
         config-file: "tfdocs-config.yml"
         recursive: true
         recursive-path: "."
@@ -33,14 +33,14 @@ jobs:
         git-push: "true"
         git-commit-message: "terraform-docs: automated action for modules docs"
 
-    - name: Generate TF docs for module folder
-      uses: terraform-docs/gh-actions@v1.0.0
-      with:
-        working-dir: "./rdsAurora/module"
-        config-file: "tfdocs-config.yml"
-        recursive: true
-        recursive-path: "."
-        output-file: README.md
-        output-method: replace
-        git-push: "true"
-        git-commit-message: "terraform-docs: automated action for modules docs"
+    # - name: Generate TF docs for module folder
+    #   uses: terraform-docs/gh-actions@v1.0.0
+    #   with:
+    #     working-dir: "./elastiCache/module"
+    #     config-file: "tfdocs-config.yml"
+    #     recursive: true
+    #     recursive-path: "."
+    #     output-file: README.md
+    #     output-method: replace
+    #     git-push: "true"
+    #     git-commit-message: "terraform-docs: automated action for modules docs"
